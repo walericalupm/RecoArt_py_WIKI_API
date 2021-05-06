@@ -1,8 +1,8 @@
 from src.api import *
-import src.app as ap
+from src.app import app, load_database
 
 
 if __name__ == '__main__':
-    ap.load_database()
-    ap.app.debug = True
-    ap.app.run(port=5001, debug=True, host='0.0.0.0')
+    load_database()
+    app.debug = True
+    app.run(port=8080, debug=True, host='0.0.0.0')
