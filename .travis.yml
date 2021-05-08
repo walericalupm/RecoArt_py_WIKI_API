@@ -10,9 +10,6 @@ install:
   - docker build -t walericalupm/recoart-wiki-api .
   - docker run -d -p 80:80 --rm --name recoart-wiki-api walericalupm/recoart-wiki-api
 
-before_script:
-  - pip install -r requirements.txt
-
 script:
   - docker exec -it recoart-wiki-api python -m unittest /usr/api/recoart_wiki_api/tests/integration/database/wikipedia_descriptions_db_it.py
   - docker exec -it recoart-wiki-api python -m unittest /usr/api/recoart_wiki_api/tests/integration/wikidata/wikipedia_descriptions_wikidata.py
