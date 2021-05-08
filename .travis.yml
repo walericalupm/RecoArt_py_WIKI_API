@@ -3,6 +3,12 @@ python:
   3.9.1
 sudo: required
 
+branches:
+  only:
+    - develop
+    - "/^Release-[0-999].[0-999]$/"
+    - master
+
 services:
   - docker
 
