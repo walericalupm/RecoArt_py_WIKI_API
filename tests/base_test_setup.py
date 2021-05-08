@@ -25,19 +25,7 @@ wikipedia_catalog_paints = []
 
 
 def load_database():
-    print(ENV_TEST_DIR)
-    print("\n")
     db_params = dotenv_values(ENV_TEST_DIR)
-    print("Db Name:\n")
-    print(db_params.get('DATABASE_NAME'))
-    print("Username:\n")
-    db_params.get('DATABASE_USERNAME')
-    print("Pass\n")
-    db_params.get('DATABASE_PASSWORD')
-    print("Host\n")
-    db_params.get('DATABASE_HOST')
-    print("Port\n")
-    db_params.get('DATABASE_PORT')
     models.remote_db.init(
         db_params.get('DATABASE_NAME'),
         user=db_params.get('DATABASE_USERNAME'),
