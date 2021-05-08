@@ -1,0 +1,17 @@
+language: python
+python:
+  3.9.1
+sudo: required
+
+services:
+  - docker
+
+install:
+  - docker build -t walericalupm/recoart_wiki_api .
+  - docker run -d -p 80:80 --rm --name recoart_wiki_api walericalupm/recoart-wiki-api
+
+script:
+  - python -m unittest tests/integration/database/wikipedia_descriptions_db_it.py
+  - python -m unittest tests/integration/wikidata/wikipedia_descriptions_wikidata.py
+  - python -m unittest tests/integration/api/wikipedia_descriptions_api_it.py
+
