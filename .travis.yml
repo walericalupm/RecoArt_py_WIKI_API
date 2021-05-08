@@ -14,4 +14,3 @@ script:
   - python -m unittest tests/integration/database/wikipedia_descriptions_db_it.py
   - python -m unittest tests/integration/wikidata/wikipedia_descriptions_wikidata.py
   - python -m unittest tests/integration/api/wikipedia_descriptions_api_it.py
-
