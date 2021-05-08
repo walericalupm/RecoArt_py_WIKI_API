@@ -8,7 +8,7 @@ services:
 
 install:
   - docker build -t walericalupm/recoart-wiki-api .
-  - docker run -p 80:80 --rm --name recoart_wiki_api walericalupm/recoart-wiki-api
+  - docker run -d -p 80:80 --rm --name recoart_wiki_api walericalupm/recoart-wiki-api
 
 script:
   - python -m unittest tests/integration/database/wikipedia_descriptions_db_it.py
