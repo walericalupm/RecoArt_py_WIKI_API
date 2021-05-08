@@ -12,6 +12,10 @@ branches:
 services:
   - docker
 
+before_install:
+  # Installing heroku CLI
+  - curl https://cli-assets.heroku.com/install.sh | sh
+
 install:
   - docker build -t walericalupm/recoart-wiki-api .
   - docker run -d -p 80:80 --rm --name recoart-wiki-api walericalupm/recoart-wiki-api
