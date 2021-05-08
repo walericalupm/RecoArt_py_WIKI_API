@@ -2,7 +2,7 @@ import os
 
 # ROOT Project Path
 CURRENT_DIR = 'src'
-ROOT_DIR = os.path.dirname(os.path.abspath(__file__)).replace(CURRENT_DIR, '')
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 ENV_TEST_DIR = os.path.join(ROOT_DIR, '.env.test')
 
 # API
