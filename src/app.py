@@ -10,7 +10,7 @@ def create_tables():
         db.create_tables([models.WikipediaPaintCatalog])
 
 
-def load_database():
+def init_database():
     db_params = dotenv_values()
     models.remote_db.init(
         db_params.get('DATABASE_NAME'),
@@ -19,6 +19,10 @@ def load_database():
         host=db_params.get('DATABASE_HOST'),
         port=int(db_params.get('DATABASE_PORT'))
     )
+
+
+def load_database():
+    init_database()
     create_tables()
 
 
