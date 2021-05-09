@@ -28,12 +28,10 @@ def load_database():
 
 @app.before_request
 def before_request():
-    init_database()
     models.remote_db.connect()
 
 
 @app.after_request
 def after_request(response):
-    init_database()
     models.remote_db.close()
     return response
