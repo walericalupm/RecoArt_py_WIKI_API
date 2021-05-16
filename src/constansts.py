@@ -15,6 +15,14 @@ JSON_MIME_TYPE = 'application/json'
 
 NOT_FOUND_MESSAGE = 'Resource Not Found'
 SERVER_ERROR_MESSAGE = 'Server Error'
+LANGUAGE_PARAM = 'lang'
+
+# API Language codes
+API_ES = '0'
+API_EN = '1'
+API_FR = '2'
+API_IT = '3'
+
 
 # HTTP Response Codes
 CREATED = 201
@@ -44,8 +52,9 @@ WPR_PARSE = 'parse'
 WPR_RANDOM = 'random'
 WPR_RESTBASE = 'restbase'
 
-# Wikipedia Tool lead text
-WPT_LEAD = 'extext'
+# Wikipedia Tool html extract text
+WPT_HTML = 'exhtml'
 
 # Various
 MESSAGE = 'message'
+HTML_COMMENTS_PATTERN = '<!--'
