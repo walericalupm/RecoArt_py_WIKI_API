@@ -52,8 +52,8 @@ WPR_PARSE = 'parse'
 WPR_RANDOM = 'random'
 WPR_RESTBASE = 'restbase'
 
-# Wikipedia Tool html extract text
-WPT_HTML = 'exhtml'
+# Wikipedia Tool extract plain text
+WPT_TEXT = 'exrest'
 
 # Various
 MESSAGE = 'message'

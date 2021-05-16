@@ -20,4 +20,4 @@ def get_info_from_wikidata(wikidata_code, lang):
     return wptools \
         .page(wikibase=wikidata_code, lang=lang, skip=skip_request, silent=True, verbose=False) \
         .get() \
-        .data[WPT_HTML]
+        .data[WPT_TEXT]
