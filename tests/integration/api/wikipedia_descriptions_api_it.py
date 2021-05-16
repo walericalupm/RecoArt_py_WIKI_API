@@ -4,7 +4,7 @@ from src.api import get_descriptions_from_wikipedia_api
 from src.dtos import DescriptionsDTO
 from src.app import app
 
-from src.constansts import BASE_URI_V1, URI_WIKIPEDIA_DESCRIPTIONS, OK, NOT_FOUND
+from src.constansts import BASE_URI_V1, URI_WIKIPEDIA_DESCRIPTIONS, OK, NOT_FOUND, LANGUAGE_PARAM
 
 
 class WikipediaDescriptionApiIT(BaseTestCase):
@@ -15,7 +15,8 @@ class WikipediaDescriptionApiIT(BaseTestCase):
     def test_get_descriptions_from_wikipedia(self):
         with app.test_client() as client:
             recoart_code = get_random_wikipedia_paint_catalog().RecoArtPaintCode
-            get_descriptions_from_wikipedia_url = BASE_URI_V1 + URI_WIKIPEDIA_DESCRIPTIONS + '/' + recoart_code
+            language_params = '?' + LANGUAGE_PARAM + '=0,1,2,3'
+            get_descriptions_from_wikipedia_url = BASE_URI_V1 + URI_WIKIPEDIA_DESCRIPTIONS + '/' + recoart_code + language_params
             response = client.get(get_descriptions_from_wikipedia_url)
             wikipedia_descriptions_json = response.get_json()
             wikipedia_descriptions = DescriptionsDTO(**wikipedia_descriptions_json)
@@ -30,4 +31,3 @@ class WikipediaDescriptionApiIT(BaseTestCase):
             response = client.get(get_descriptions_from_wikipedia_url)
 
             self.assertEqual(NOT_FOUND, response.status_code)
-
