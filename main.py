@@ -7,5 +7,5 @@ if __name__ == '__main__':
     load_database()
     app.debug = True
     app.run(port=int(os.environ.get(PORT, DEFAULT_APP_PORT)),
-            debug=True,
+            debug=False,
             host=DEFAULT_APP_HOST)

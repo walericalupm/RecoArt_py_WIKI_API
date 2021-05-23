@@ -12,6 +12,11 @@ class WikipediaDescriptionApiIT(BaseTestCase):
     def setUp(self):
         models.remote_db.close()
 
+    def test_redirect_index_to_api_docs(self):
+        with app.test_client() as client:
+            response = client.get(URI_INDEX)
+            self.assertEqual(REDIRECT_FOUND, response.status_code)
+
     def test_get_descriptions_from_wikipedia(self):
         with app.test_client() as client:
             recoart_code = get_random_wikipedia_paint_catalog().RecoArtPaintCode
