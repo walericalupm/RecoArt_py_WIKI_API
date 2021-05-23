@@ -6,7 +6,8 @@ sudo: required
 branches:
   only:
     - develop
-    - "/^Release-[0-999].[0-999]$/"
+    - "/^revision-v[0-999].[0-999]$/"
+    - "/^revision-v[0-999].[0-999].[0-999]$/"
     - master
 
 services:
@@ -35,4 +36,4 @@ deploy:
     docker push registry.heroku.com/$HEROKU_APP_NAME/web;
     heroku container:release web --app $HEROKU_APP_NAME
   on:
-    branch: master
+    branch: revision-v1.1.1

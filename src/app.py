@@ -4,7 +4,9 @@ import src.models as models
 from dotenv import dotenv_values
 from src.constants import TEMPLATE_FOLDER_DIR, STATIC_FOLDER_DIR, FLASK_CONFIG_CORS_HEADERS_KEY,FLASK_CONFIG_CORS_HEADERS_VALUE
 
-app = Flask(__name__)
+app = Flask(__name__,
+            template_folder=TEMPLATE_FOLDER_DIR,
+            static_folder=STATIC_FOLDER_DIR)
 cors = CORS(app)
 app.config[FLASK_CONFIG_CORS_HEADERS_KEY] = FLASK_CONFIG_CORS_HEADERS_VALUE
 

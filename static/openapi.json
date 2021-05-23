@@ -1,32 +1,32 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "Welcome to RecoArt API for RecoArt APP. This API was developed with Flask and retrieve information for RecoArt Paints. RecoArt is an iOS APP to identify Art Paints (more information about RecoArt APP at [RecoArt master final project](http://oa.upm.es/52908/) ).",
-    "version": "1.0.1",
-    "title": "RecoArt API",
+    "description": "Welcome to RecoArt Wiki API for RecoArt API. This API was developed with Flask and retrieve art paint information from Wikidata and send to RecoArt API. You can access to [RecoArt API here](http://recoart-api.herokuapp.com) RecoArt Wiki API uses [Wikipedia tools (for Humans)](https://github.com/siznax/wptools/) lib to get information from Wikidata. .",
+    "version": "1.1.1",
+    "title": "RecoArt Wiki API",
     "contact": {
       "email": "e.aldas@alumnos.upm.es"
     }
   },
-  "host": "recoart-api.herokuapp.com",
+  "host": "recoart-py-wiki-api.herokuapp.com",
   "basePath": "/api/v1",
   "tags": [
     {
-      "name": "art",
-      "description": "Retrieve information about Art paints"
+      "name": "wiki art description",
+      "description": "Retrieve art paint information from Wikidata"
     }
   ],
   "schemes": [
     "https"
   ],
   "paths": {
-    "/art/{code}": {
+    "/wikidescriptions/{code}": {
       "get": {
         "tags": [
-          "art"
+          "wiki art description"
         ],
-        "summary": "Find a paint by RecoArt Code",
-        "description": "Return all information about art paint with our descriptions in some languages",
+        "summary": "Get wikipedia summary by Recoart code",
+        "description": "Get Wikipedia summary art paint description in a specifi language by Reco Art code paint ",
         "operationId": "get_art_painitings_by_code",
         "produces": [
           "application/json"
@@ -35,16 +35,34 @@
           {
             "name": "code",
             "in": "path",
-            "description": "Recoart paint code of art paint to return",
+            "description": "Recoart paint code (e.g AP_001_001)",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "description": "Description language(s) to return. You can query next languages separated by comma (e.g. 0,1):  Spanish: 0 | English: 1 | French: 2 | Italian: 3 ",
+            "required": true,
+            "type": "string",
+            "items": {
+              "type": "string",
+              "enum": [
+                "0 (ES)",
+                "1 (EN)",
+                "2 (FR)",
+                "2 (IT)"
+              ],
+              "default": "available"
+            },
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
           "200": {
             "description": "successful operation",
             "schema": {
-              "$ref": "#/definitions/Paint"
+              "$ref": "#/definitions/Descriptions"
             }
           },
           "404": {
@@ -66,59 +84,22 @@
           "format": "int64",
           "example": "0"
         },
-        "Name": {
-          "type": "string",
-          "example": "El Retrato de Lisa Gherardini, esposa de Francesco del Giocondo"
-        },
-        "Pseudonym": {
-          "type": "string",
-          "example": "La Mona Lisa"
-        },
-        "Medium": {
-          "type": "string",
-          "example": "Pintura al óleo sobre tabla de álamo"
-        },
         "Description": {
           "type": "string",
           "example": "El Retrato de Lisa Gherardini, esposa..."
         }
       }
     },
-    "Paint": {
+    "Descriptions": {
       "type": "object",
       "properties": {
-        "Id": {
-          "type": "integer",
-          "format": "int64",
-          "example": 1
-        },
-        "Code": {
+        "RecoArtPaintCode": {
           "type": "string",
           "example": "AP_001_001"
         },
-        "Artist": {
+        "WikipediaPaintCode": {
           "type": "string",
-          "example": "Leondardo da Vinci"
-        },
-        "Year": {
-          "type": "string",
-          "example": "1530"
-        },
-        "Location": {
-          "type": "string",
-          "example": "Musée du Louvre, Paris"
-        },
-        "Image": {
-          "type": "string",
-          "example": "/9j/4AAQSkZJRgABAQ..."
-        },
-        "Link": {
-          "type": "string",
-          "example": "https://www.louvre.fr/en/oeuvre-notices/mona-lisa-portrait-lisa-gherardini-wife-francesco-del-giocondo"
-        },
-        "ExistWikiDescription": {
-          "type": "boolean",
-          "example": true
+          "example": "Q12418"
         },
         "Descriptions": {
           "type": "array",
