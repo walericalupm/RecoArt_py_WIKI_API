@@ -6,7 +6,8 @@ sudo: required
 branches:
   only:
     - develop
-    - "/^Release-[0-999].[0-999]$/"
+    - "/^revision-v[0-999].[0-999]$/"
+    - "/^revision-v[0-999].[0-999].[0-999]$/"
     - master
 
 services:

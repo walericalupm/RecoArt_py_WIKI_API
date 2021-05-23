@@ -1,5 +1,5 @@
 import wptools as wptools
-from src.constansts import *
+from src.constants import *
 
 
 def extract_wikipedia_descriptions(wikidata_code, language):

@@ -4,13 +4,18 @@ from src.api import get_descriptions_from_wikipedia_api
 from src.dtos import DescriptionsDTO
 from src.app import app
 
-from src.constansts import *
+from src.constants import *
 
 
 class WikipediaDescriptionApiIT(BaseTestCase):
 
     def setUp(self):
         models.remote_db.close()
+
+    def test_redirect_index_to_api_docs(self):
+        with app.test_client() as client:
+            response = client.get(URI_INDEX)
+            self.assertEqual(REDIRECT_FOUND, response.status_code)
 
     def test_get_descriptions_from_wikipedia(self):
         with app.test_client() as client:
