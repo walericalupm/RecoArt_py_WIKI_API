@@ -4,7 +4,7 @@ from src.api import get_descriptions_from_wikipedia_api
 from src.dtos import DescriptionsDTO
 from src.app import app
 
-from src.constansts import *
+from src.constants import *
 
 
 class WikipediaDescriptionApiIT(BaseTestCase):

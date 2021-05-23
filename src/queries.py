@@ -1,5 +1,5 @@
 from peewee import DoesNotExist
-from src.constansts import OK, NOT_FOUND, SERVER_ERROR
+from src.constants import OK, NOT_FOUND, SERVER_ERROR
 from src.wikipedia_extractor import extract_wikipedia_descriptions
 from src.dtos import DescriptionsDTO, DescriptionDTO
 from src.models import WikipediaPaintCatalog

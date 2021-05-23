@@ -2,9 +2,9 @@ import unittest
 from faker import Faker
 from random import randint, seed
 from dotenv import dotenv_values
-from src.constansts import ENV_TEST_DIR
+from src.constants import ENV_TEST_DIR
 import src.models as models
-from src.constansts import LANG_ES, LANG_EN, LANG_FR, LANG_IT
+from src.constants import LANG_ES, LANG_EN, LANG_FR, LANG_IT
 
 
 class BaseTestCase(unittest.TestCase):
